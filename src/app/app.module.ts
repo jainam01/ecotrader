@@ -19,6 +19,7 @@ import { SmallapplianceComponent } from './Body/body/smallappliances/smallapplia
 import { MobilecomputerComponent } from './Body/body/Mobiles & Computers/mobilecomputer/mobilecomputer.component';
 import { OtherComponent } from './Body/body/other/other/other.component';
 import { FooterComponent } from './footer/footer/footer.component';
+import { DateComponent } from './date/date/date.component';
 
 
 
@@ -49,6 +50,7 @@ const appRoutes : Routes = [
     MobilecomputerComponent,
     OtherComponent,
     FooterComponent,
+    DateComponent,
   ],
   imports: [
     BrowserModule,
