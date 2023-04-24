@@ -20,6 +20,7 @@ import { MobilecomputerComponent } from './Body/body/Mobiles & Computers/mobilec
 import { OtherComponent } from './Body/body/other/other/other.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { DateComponent } from './date/date/date.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 
@@ -56,7 +57,15 @@ const appRoutes : Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+
+    AuthModule.forRoot({
+      domain: 'dev-ievh08aavkaz4hyb.us.auth0.com',
+      clientId: 'VT7TyLEOXEpgPs5bU0GUmJyrWBfaukMM',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

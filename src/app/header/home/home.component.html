@@ -21,28 +21,80 @@
 
         <!-- Right part -->
 
-        <div class="col-lg-6 login-mobile-box" id="schedulePickup">
-            <div id="SchedulePickup" class="local_home_rightSide" style="height: 75vh;">
-                <div class="login_form_open">
-                    <div class="local_login_form">
-                        <div>
-                            <form>
-                                <h4 class="local_login_title">Schedule a Pickup</h4>
-                                <p class="local_mobile_text">Mobile</p>
-                                <div class="local_input_box ">
-                                    <span style="width: 2rem;">+91</span>
-                                    <input name="phoneNumber" type="tel" maxlength="10" class="sign_header_input "
-                                        id="phoneNumber" autocomplete="new-password" value="">
-                                </div>
-                                <p class="error_para"> </p>
-                                <input type="submit"
-                                    class="local_next_button md button button-solid ion-activatable ion-focusable">
-                            </form>
+
+
+
+        <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+            <div class="col-lg-6 col-sm-12 mt-5 login-mobile-box" id="schedulePickup">
+                <div id="schedulePickup" class="local_home_rightside" style="height: 100vh;">
+                    <div class="local_login_form first_login_form">
+                        <div class="old_user_div">
+                            <h4 class="local_login_title">Nice to see 
+                                <h4 *ngIf="auth.user$ | async as user" class="local_login_title username">
+                                    {{user.name}}
+                                </h4>
+                            </h4>
+                            <p class="receive_otp mt-3">Impact made by Eco-Trader</p>
+                            <div class="old_user_img">
+                                <div class="first_login_kg"><span class="lcd">1,443,515 KG</span><span
+                                        style="font-size: .7rem;">Recycled</span></div>
+                                <div class="first_login_euro hidden">Rs 100<span>Earned</span></div><img
+                                    src="https://ik.imagekit.io/y8s2vhk66ef/Main_Page_Illustration_e9Jz4TCH361.png?updatedAt=1628127523534"
+                                    alt="">
+                                <p class="receive_otp">Wish to recycle more? </p>
+                            </div>
+                            <div class="button_div">
+                                <button
+                                    class="local_next_button old_user_button pickupBtn md button button-solid ion-activatable ion-focusable">
+                                    Schedule a pickup</button>
+                                <!-- <button
+                                    class="mt-3 local_next_button old_user_button pickupBtn md button button-solid ion-activatable ion-focusable">
+                                    Check my pickups</button> -->
+                            </div>
+                            <div>
+                                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                                    <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })"
+                                    class="md button button-solid ion-activatable ion-focusable" 
+                                    style="font-weight: 700; font-size: 15px; text-align: center; margin-left: 200px;"   >
+                                      Log out
+                                    </button>
+                                </ng-container>
+                                <p class="help_text">Facing Problems? Call us at<a href="tel:+918595358613">
+                                        +917041609760</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #loggedOut>
+            <div class="col-lg-6 login-mobile-box" id="schedulePickup">
+                <div id="SchedulePickup" class="local_home_rightSide" style="height: 75vh;">
+                    <div class="login_form_open">
+                        <div class="local_login_form">
+                            <div>
+                                <form>
+                                    <h4 class="local_login_title">What would you like to Sell?</h4>
+                                    <p class="local_mobile_text">Schedule a Pickup</p>
+                                    <div class="local_input_box ">
+                                        <span style="width: 20rem;">Newspaper , Plastics & much more </span>  
+                                    </div>
+                                    <p class="error_para">We Do not pick up wood,cloth and glasses. </p>
+                                    <button type="submit"
+                                        class="local_next_button md button button-solid ion-activatable ion-focusable" 
+                                        (click)="auth.loginWithRedirect()" >Login</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-template>
+
+
     </div>
 </div>
 
@@ -181,6 +233,8 @@
         </div>
     </div>
 </section>
+
+
 
 <!-- footer -->
 

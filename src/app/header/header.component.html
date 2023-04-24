@@ -1,6 +1,6 @@
 <html>
 
- <head>
+<head>
     <script>
 
         let navToggle = document.querySelector(".nav__toggle");
@@ -18,13 +18,15 @@
         });
 
     </script>
- </head>
+</head>
 
 <body>
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
             <div class="site-header__start">
-                <a href="#" class="brand"> <img src="../../assets/image/Organic Food Logo (1).png" alt="assets"></a>
+                <a href="#" class="brand">
+                    <span class="logo"></span>
+                </a>
             </div>
             <div class="site-header__middle">
                 <nav class="nav">
@@ -40,8 +42,24 @@
                     </ul>
                 </nav>
             </div>
-            <div class="site-header__end">
-                <a routerLink="Signin">Sign in</a>
+
+            <!-- sign in -->
+            <div class="button">
+                <!-- <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                    <button 
+                        (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+                        Log out
+                    </button>
+                </ng-container>
+
+                <ng-template #loggedOut>
+                    <button (click)="auth.loginWithRedirect()">Log in</button>
+                </ng-template> -->
+
+                <ul *ngIf="auth.user$ | async as user">
+                    <li>{{ user.name }}</li>
+                    <!-- <li>{{ user.email }}</li> -->
+                </ul>
             </div>
         </div>
     </header>

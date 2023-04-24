@@ -2,6 +2,11 @@
     border-radius: 50px;
 }
 
+.logo{
+    width: 100px;
+    background-image: url();
+}
+
 .site-header {
     position: relative;
     background-color: #def7ff
